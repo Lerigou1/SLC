@@ -2,9 +2,11 @@
 
 {% block body %}
     <h1>Listas:</h1>
+    <h3><a href="{% url 'mercado' %}">Mercado</a></h3>
     <ul>
         {% for listas in listas %}
             <li><a href="{% url 'lista' listas.id %}">Lista {{ listas.id }}</a>: {{ listas.nome_lista }}</li>
         {% endfor %}
     </ul>
+
 {% endblock %}

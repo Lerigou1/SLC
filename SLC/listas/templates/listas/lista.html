@@ -13,10 +13,13 @@
         {% endfor %}
     </ul>
 
-    <h1>Adicionar Produto:</h1>
-    <form action="">
-        <input type="text" name="produto">
-        <input type="number" name="preco">
+    <form action="{% url 'livro' lista.id %}" method="post">
+        {% csrf_token %}
+        <select name="produto" id="">
+            {% for produto in sem_lista %}
+                <option value="{{ produto.id }}">{{ produto }}</option>
+            {% endfor %}
+        </select>
         <input type="submit" name="Adicionar">
     </form>
 

@@ -1,0 +1,15 @@
+{% extends "listas/layout.html" %}
+
+{% block body %}
+    <h1>Mercado:</h1>
+    <form action="{% url 'mercado' %}" method="post">
+        <label for="produto">Produto: </label>
+        <input id="produto" type="text" name="produto">
+        <label for="preco">Preço: </label>
+        <input id="preco" type="number" name="preco">
+        {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Adicionar">
+            </form>
+            <a href="{% url 'index' %}">Todas as Listas</a>
+        {% endblock %}
