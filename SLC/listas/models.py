@@ -7,7 +7,7 @@ class Lista(models.Model):
     nome_lista = models.CharField(max_length=64)
     
     def __str__(self):
-        return f"{self.id}. {self.nome_lista}"
+        return f"{self.nome_lista}"
 
 class Produto(models.Model):
     produto = models.CharField(max_length=64)
@@ -17,4 +17,5 @@ class Produto(models.Model):
     def __str__(self):
         return f"{self.produto} - R$  {self.preco}"
 
-#
+class NovaLista(forms.Form):
+    nova = forms.CharField(label="Nova Lista")

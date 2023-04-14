@@ -7,6 +7,14 @@
         {% for listas in listas %}
             <li><a href="{% url 'lista' listas.id %}">Lista {{ listas.id }}</a>: {{ listas.nome_lista }}</li>
         {% endfor %}
+
     </ul>
+    <h2>Adicionar Lista:</h2>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="text" name="nova">
+        <input type="submit" value="Adicionar">
+    </form>
 
 {% endblock %}

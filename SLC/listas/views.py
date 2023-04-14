@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from .models import *
 from django import forms
+from django.db import transaction
 
 # Create your views here.
 
@@ -18,6 +19,9 @@ def lista(request, lista_id):
         "produto": produto,
         "sem_lista": sem_lista
     })
+
+class NovoProduto(forms.Form):
+    novo = forms.CharField(label="Novo Produto")
 
 def mercado(request):
     if request.method == "POST":
@@ -42,3 +46,20 @@ def livro(request, lista_id):
         produto = Produto.objects.get(pk=produto_id)
         produto.nome.add(lista)
         return HttpResponseRedirect(reverse("lista", args=(lista.id,)))
+
+def add(request):
+    if request.method == "POST":
+        form = NovaLista(request.POST)
+        if form.is_valid():
+            listas = []
+            with transaction.atomic():
+                for item in listas:
+                    Lista.objects.create(nome_lista=item.nome_lista)
+            return HttpResponseRedirect(reverse("listas/index.html"))
+        else:
+            return render(request, "listas/index.html", {
+                "form": form
+            })
+    return render(request, "listas/index.html", {
+        "form": NovaLista()
+    })
