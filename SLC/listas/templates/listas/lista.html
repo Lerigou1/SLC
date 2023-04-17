@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Lista: {{ lista.nome_lista }}</h1>
-    <a href="{% url 'index' %}">Todas as Listas</a>
+    <a href="{% url 'listas:index' %}">Todas as Listas</a>
 
     <h2>Produtos:</h2>
     <ul>
@@ -13,14 +13,14 @@
         {% endfor %}
     </ul>
 
-    <form action="{% url 'livro' lista.id %}" method="post">
+    <form action="{% url 'listas:livro' lista.id %}" method="post">
         {% csrf_token %}
         <select name="produto" id="">
             {% for produto in sem_lista %}
                 <option value="{{ produto.id }}">{{ produto }}</option>
             {% endfor %}
         </select>
-        <input type="submit" name="Adicionar">
+        <input type="submit" value="Adicionar">
     </form>
 
 {% endblock %}

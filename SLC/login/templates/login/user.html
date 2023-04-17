@@ -1,0 +1,12 @@
+{% extends "login/layout.html" %}
+
+{% block body %}
+    <h1>Bem-Vindo(a) {{ request.user.username }}</h1>
+    <h3><a href="{% url 'listas:index' %}">Listas Aqui!</a></h3>
+    <ul>
+        <li>Nome de Usuário: {{ request.user.username }}</li>
+        <li>Email: {{ request.user.email }}</li>
+    </ul>
+
+    <a href="{% url 'login:logout' %}">Log Out</a>
+{% endblock %}

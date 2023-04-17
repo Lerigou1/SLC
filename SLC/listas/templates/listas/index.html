@@ -2,19 +2,20 @@
 
 {% block body %}
     <h1>Listas:</h1>
-    <h3><a href="{% url 'mercado' %}">Mercado</a></h3>
+    <h3><a href="{% url 'listas:mercado' %}">Mercado</a></h3>
     <ul>
         {% for listas in listas %}
-            <li><a href="{% url 'lista' listas.id %}">Lista {{ listas.id }}</a>: {{ listas.nome_lista }}</li>
+            <li><a href="{% url 'listas:lista' listas.id %}">{{ listas.nome_lista }}</a></li>
         {% endfor %}
 
     </ul>
     <h2>Adicionar Lista:</h2>
-    <form action="{% url 'index' %}" method="post">
+    <form action="{% url 'listas:index' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="text" name="nova">
+        <input type="text" nome="tasks" placeholder="Nova Lista">
         <input type="submit" value="Adicionar">
     </form>
-
+    <br>
+    <a href="{% url 'login:logout' %}">Log Out</a>
 {% endblock %}

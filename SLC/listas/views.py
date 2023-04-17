@@ -3,6 +3,7 @@ from .models import *
 from django import forms
 from django.db import transaction
 
+tasks = list()
 # Create your views here.
 
 def index(request):
@@ -47,14 +48,15 @@ def livro(request, lista_id):
         produto.nome.add(lista)
         return HttpResponseRedirect(reverse("lista", args=(lista.id,)))
 
+class NovaLista(forms.Form):
+    form = forms.CharField(label="Nova Lista")
+
 def add(request):
     if request.method == "POST":
         form = NovaLista(request.POST)
         if form.is_valid():
-            listas = []
-            with transaction.atomic():
-                for item in listas:
-                    Lista.objects.create(nome_lista=item.nome_lista)
+            task = form.cleaned_data["task"]
+            tasks.append(task)
             return HttpResponseRedirect(reverse("listas/index.html"))
         else:
             return render(request, "listas/index.html", {
