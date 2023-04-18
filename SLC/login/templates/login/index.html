@@ -1,14 +1,7 @@
 {% extends "login/layout.html" %}
 
 {% block body %}
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-    <h1>Informe os Dados:</h1>
-    <form action="{% url 'login:index' %}" method="post">
-        {% csrf_token %}
-        <input type="text", name="username", placeholder="Nome de Usuário">
-        <input type="password", name="password", placeholder="Senha">
-        <input type="submit", value="Login">
-    </form>
+    <h1>Cadastro e Login</h1>
+    <h3><a href="{% url 'login:cadastro' %}"> Cadastre-se Aqui!</a></h3>
+    <h3><a href="{% url 'login:login' %}"> Login!</a></h3>
 {% endblock %}

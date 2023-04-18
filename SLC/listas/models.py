@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.forms import ModelForm
 
 # Create your models here.
 
@@ -17,5 +18,13 @@ class Produto(models.Model):
     def __str__(self):
         return f"{self.produto} - R$  {self.preco}"
 
-class NovaLista(forms.Form):
-    nova = forms.CharField(label="Nova Lista")
+
+class NovaLista(ModelForm):
+    class Meta:
+        model = Lista
+        fields = ['nome_lista']
+
+class NovoProduto(ModelForm):
+    class Meta:
+        model = Produto
+        fields = ['produto', 'preco']

@@ -1,10 +1,10 @@
 {% extends "listas/layout.html" %}
 
 {% block body %}
-    <h1>Mercado:</h1>
+<h2>Adicionar Lista:</h2>
     <form method="post" aria-required="false">
         {% csrf_token %}
-        {{formProduto.as_p}}
+        {{formLista.as_p}}
         <input type="submit" value="Adicionar">
     </form>
     <br>

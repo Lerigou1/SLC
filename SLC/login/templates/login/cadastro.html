@@ -1,0 +1,17 @@
+{% extends "login/layout.html" %}
+
+{% block body %}
+<h2>Cadastro:</h2>
+{% if message %}
+    <div>{{ message }}</div>
+{% endif %}
+<br>
+    <form action="{%url 'login:cadastro' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Nome de Usuário" name="username">
+        <input type="password" placeholder="Senha" name="senha">
+        <input type="submit" value="cadastrar">
+    </form>
+    <br>
+    <a href="{%url 'login:index' %}">Voltar</a>
+{% endblock %}
