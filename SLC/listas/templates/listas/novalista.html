@@ -1,12 +1,12 @@
 {% extends "listas/layout.html" %}
 
 {% block body %}
-<h2>Adicionar Lista:</h2>
+<h1>Adicionar Lista:</h1>
     <form method="post" aria-required="false">
         {% csrf_token %}
         {{formLista.as_p}}
-        <input type="submit" value="Adicionar">
+        <input id="confirma" type="submit" value="Adicionar">
     </form>
     <br>
-    <a href="{% url 'listas:index' %}">Todas as Listas</a>
+    <a id="back" href="{% url 'listas:index' %}">Todas as Listas</a>
 {% endblock %}

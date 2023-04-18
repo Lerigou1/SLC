@@ -1,7 +1,7 @@
 {% extends "login/layout.html" %}
 
 {% block body %}
-<h2>Cadastro:</h2>
+<h1>Cadastro:</h1>
 {% if message %}
     <div>{{ message }}</div>
 {% endif %}
@@ -9,9 +9,11 @@
     <form action="{%url 'login:cadastro' %}" method="POST">
         {% csrf_token %}
         <input type="text" placeholder="Nome de Usuário" name="username">
+        <br>
         <input type="password" placeholder="Senha" name="senha">
-        <input type="submit" value="cadastrar">
+        <br>
+        <input id="confirma" type="submit" value="Cadastrar">
     </form>
     <br>
-    <a href="{%url 'login:index' %}">Voltar</a>
+    <a id="voltar" href="{%url 'login:index' %}">Voltar</a>
 {% endblock %}

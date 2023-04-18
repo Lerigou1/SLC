@@ -4,11 +4,11 @@
     <h1>Listas:</h1>
     <ul>
         {% for listas in listas %}
-            <li><a href="{% url 'listas:lista' listas.id %}">{{ listas.nome_lista }}</a></li>
+            <li><a id="itens" href="{% url 'listas:lista' listas.id %}">{{ listas.nome_lista }}</a></li>
         {% endfor %}
     </ul>
-    <h3><a href="{% url 'listas:add_lista' %}">Adicionar Lista</a></h3>
-    <h3><a href="{% url 'listas:mercado' %}">Mercado</a></h3>
+    <h3><a id="add" href="{% url 'listas:add_lista' %}">Adicionar Lista</a></h3>
+    <h3><a id="add" href="{% url 'listas:mercado' %}">Mercado</a></h3>
 
-    <a href="{% url 'login:logout' %}">Log Out</a>
+    <a id="sair" href="{% url 'login:logout' %}">Log Out</a>
 {% endblock %}

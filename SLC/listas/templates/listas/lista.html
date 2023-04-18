@@ -2,12 +2,12 @@
 
 {% block body %}
     <h1>Lista: {{ lista.nome_lista }}</h1>
-    <a href="{% url 'listas:index' %}">Todas as Listas</a>
+    <a id="back" href="{% url 'listas:index' %}">Todas as Listas</a>
 
     <h2>Produtos:</h2>
-    <ul>
+    <ul id="produtos">
         {% for produto in produto %}
-            <li>{{ produto }}</li>
+            <li><b>{{ produto }}</b></li>
         {% empty %}
             <li>Sem Produtos</li>
         {% endfor %}
@@ -20,7 +20,7 @@
                 <option value="{{ produto.id }}">{{ produto }}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="Adicionar">
+        <input id="confirma" type="submit" value="Adicionar">
     </form>
 
 {% endblock %}
